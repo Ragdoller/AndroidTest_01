@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragment01#newInstance} factory method to
+ * Use the {@link Fragment02#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment01 extends Fragment {
-/*
+public class Fragment02 extends Fragment {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -23,8 +23,8 @@ public class Fragment01 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-*/
-    public Fragment01() {
+
+    public Fragment02() {
         // Required empty public constructor
     }
 
@@ -34,14 +34,14 @@ public class Fragment01 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment01.
+     * @return A new instance of fragment Fragment02.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragment01 newInstance(String param1, String param2) {
-        Fragment01 fragment = new Fragment01();
+    public static Fragment02 newInstance(String param1, String param2) {
+        Fragment02 fragment = new Fragment02();
         Bundle args = new Bundle();
-    //    args.putString(ARG_PARAM1, param1);
-     //   args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -49,16 +49,16 @@ public class Fragment01 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*if (getArguments() != null) {
+        if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-        }*/
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_01, container, false);
+        return inflater.inflate(R.layout.fragment_02, container, false);
     }
 }

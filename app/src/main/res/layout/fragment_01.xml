@@ -7,7 +7,14 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <Button
+        android:id="@+id/button_NewData"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:text="@string/newDataButtonText" />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecycleList1"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

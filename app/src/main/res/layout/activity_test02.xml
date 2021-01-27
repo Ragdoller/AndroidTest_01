@@ -7,16 +7,24 @@
     android:background="@color/Borange"
     tools:context=".TestActivity02">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <fragment
         android:id="@+id/fragment"
         android:name="com.example.secondapphelloworld.Fragment01"
-        android:layout_width="286dp"
-        android:layout_height="167dp"
+        android:layout_width="403dp"
+        android:layout_height="658dp"
         android:layout_marginEnd="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/viewPager2"
+        tools:layout="@layout/fragment_01" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
