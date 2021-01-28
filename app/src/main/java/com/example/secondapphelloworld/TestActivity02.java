@@ -21,22 +21,25 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
+
+import java.util.List;
 
 public class TestActivity02 extends AppCompatActivity {
-   // private RecyclerView mTextViewResult;
-  //  private RequestQueue mQueue;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test02);
 
-    //    mTextViewResult = findViewById(R.id.RecycleList1); // get by id the recycleview from f1
+
         Button buttonND = findViewById(R.id.button_NewData); // get by id the button
          buttonND.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
                  //Toast.makeText(getApplicationContext(),"Clicked",Toast.LENGTH_LONG).show(); //test button w/ toast
-                 String url="https://antiabbandono.herokuapp.com/api/v0/getAllarme";
+                 String url="https://antiabbandono.herokuapp.com/api/v0/getAllarme"; //url2
                  GetDataFromUrl2(url);
              }
          });
@@ -44,13 +47,13 @@ public class TestActivity02 extends AppCompatActivity {
     }
 
     private void GetDataFromUrl2(String url){
-        RecyclerView textView= findViewById(R.id.RecycleList1); // get by id the recycleview from f1
-        View textChild = textView.getChildAt(0);
-        // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(this);
-
+        RecyclerView RViewF1 = findViewById(R.id.RecycleList1); // get by id the recyclerview from f1
+      //  TextView textChild = (TextView) RViewF1.getChildAt(0);
+        TextView t = findViewById(R.id.textView3);
+        RequestQueue queue = Volley.newRequestQueue(this);      // Instantiate the RequestQueue.
+        queue.start();
 /*
-// Request a string response from the provided URL.
+// Request a string response from the provided URL. ----------------------------------
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -64,14 +67,50 @@ public class TestActivity02 extends AppCompatActivity {
             }
         });
 
-// Add the request to the RequestQueue.
-        queue.add(stringRequest);
+        queue.add(stringRequest);       // Add the request to the RequestQueue.
 */
+/*
+//JSON obj request POST ----------------------------------
+        JsonObjectRequest jobReq = new JsonObjectRequest(Request.Method.POST, url, jObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject jsonObject) {
 
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
 
+                    }
+                });
+
+        queue.add(jobReq);*/
+
+        //Json obj GET from url2 for recyclerview
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest (Request.Method.GET, url,null,
+                new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    //translate JSON to data
+                    try {
+                        JSONObject data= response.getJSONObject("type");
+                        t.setText(data.toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            },new Response.ErrorListener(){
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), "Error! request fail", Toast.LENGTH_LONG).show();
+                }
+            });
+
+        queue.add(jsonObjectRequest);
     }
 
-        }
+}
 
    /* private void jsonParse(){
         String url ="url2";
@@ -87,7 +126,7 @@ public class TestActivity02 extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //TODO error toast here
+                //toast error
             }
         });
     }*/

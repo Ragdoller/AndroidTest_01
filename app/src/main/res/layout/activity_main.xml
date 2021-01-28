@@ -13,19 +13,17 @@
         android:layout_marginBottom="300dp"
         android:layout_marginStart="120dp"
         android:onClick="BeginAnew"
-        android:text="Whatever, click me."
+        android:text="@string/PressMe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextTextPersonName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="250dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/hello_world"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintStart_toStartOf="@+id/button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
